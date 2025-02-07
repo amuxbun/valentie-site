@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset ="UTF-8">
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+      body {
+        text-align: center;
+        background: linear-gradient(to bottom, #ffcccc,#ff99cc);
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        overflow: hidden;
+        position: relative;
+        height: 100vh;
+      }
+      h1 {
+        color: white;
+        font-size: 3em;
+        margin-top: 20px;
+      }
+      .heart {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        background: url('https://cbn-icons-png.flaticon.com/512/833/833472.png') no-repeat center/contain;
+        cursor: pointer;
+      }
+      .hidden {
+        display: none;
+      }
+      .final-message {
+        display: none;
+        font-size: 2em;
+        color: white;
+      }
+      .buttons button{
+        font-size: 1.5em;
+        padding: 10px 20px;
+        margin: 10px;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+      }
+      .yes {
+        background-color: red;
+        color: white;
+      }
+      .no {
+        background-color: white;
+        color: black;
+        position: absolute;
+      }
+      @keyframes floatHearts {
+        from { transform: traslateY(100vh); opacity: 1; }
+        to { transform: traslateY(-10vh); opacity: 0; }
+      }
+      .floating-heart{
+        position: absoulte;
+        width: 30px;
+        height: 30px;
+        background: url('https://cbn-icons-png.flaticon.com/512/833/833472.png') no-repat center/contain;
+        animation: floatingHearts 5s linear infinte;
+      }
+      </style>
+  </head>
+  <body>
+    <h1>Catch the Heart! ❤️</h1>
+
+    <div class="heart" id="heart"></div>
+
+    <div class="final-message hidden" id="finalMessage">
+      <h1>Will You Be My Valentine? ❤️</h1>
+      <div class="buttons">
+        <button class="yes" onclick="alert('Yay! ❤️ Can/'t wait!')">Yes</button>
+        <button id="no" class="no" onmouseover="moveButton()">No</button>
+      </div>
+    </div>
+     <script>
+       const heart = document.getElementById('heart');
+       const finalMessage = document.getElementById('finalMessage');
+       const body =document.body;
+
+       function moveHeart() {
+         let x = Math.random() * (window.innerWidth - 50);
+         let y = Math.random() * (window.innerHeight - 50);
+         heart.style.top = y + 'px';
+       }
+       
+       function catchHeart() {
+         heart.style.display = 'none';
+         finalMessage.classList.remove('hidden');
+       }
+       heart.addEventListener('mouseover', moveHeart);
+       heart.addEventListener('click', catchHeart);
+
+       function moveButton() {
+         var noButton = document.getElementById('no');
+         var x = Math.random() * (window.innerWidth - 100);
+         var y = Math.random() * (window.innerHeight - 50);
+         noButton.style.left = x + 'px';
+         noButton.style.top = y + 'px';
+       }
+
+       function createFloatingHeart() {
+         let heart = document.createElement('div');
+         heart.classlist.add('floating-heart');
+         heart.style.left = Math.random() * window.innerWidth + 'px';
+         document.body.appendChild(heart);
+         setTimeout(() => heart.remove(), 5000);
+       }
+       setIneterval(createFloatingHeart, 500);
+       moveHeart();
+     </script>
+  </body>
+</html>
+
+                                                               
+        
